@@ -2,9 +2,10 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const _ = require("lodash");
-
+require('dotenv').config();
 const mongoose = require("mongoose");
-mongoose.connect("mongodb+srv://Admin-Rakshith:test123@cluster0.xorse.mongodb.net/todolistDB?retryWrites=true&w=majority", {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false});
+
+mongoose.connect(process.env.MONGO_CONNECTION_URL, {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false});
 
 const itemsSchema = new mongoose.Schema({
   name: String
